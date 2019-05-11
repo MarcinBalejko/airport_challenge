@@ -9,7 +9,7 @@ describe Airport do
     end
 
     it 'stores plane' do
-        plane = Plane.new
+        plane = double(:plane, landed?: true)
         expect(subject.store_plane(plane)[0]).to eq plane
     end
 
@@ -18,8 +18,15 @@ describe Airport do
     end
 
     it 'defaults capacity' do
+        plane = double(:plane, landed?: true)
         described_class::DEFAULT_CAPACITY.times { subject.store_plane(plane) }
         expect{subject.store_plane(plane)}.to raise_error 'Airport is full'
+    end
+
+    it 'raises an error when full' do
+        plane = double(:plane, landed?: true)
+        subject.capacity.times { subject.store_plane(plane) }
+        expect { subject.store_plane(plane) }.to raise_error 'Airport is full'
     end
 
 

@@ -9,10 +9,11 @@ class Airport
     end
     def store_plane(plane)
         fail 'Airport is full' if full?
+        fail 'No plane landing' if plane.landed? != true
         @planes << plane
     end
     def full?
         @planes.count >= @capacity
     end
-    
+
 end

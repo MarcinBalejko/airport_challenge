@@ -1,7 +1,9 @@
-
+require_relative 'airport'
 class Plane
-    def land
+    def land(airport)
         @landed = true
+        fail 'Airport is full' if airport.full? != false
+        
     end
     def landed?
         @landed
