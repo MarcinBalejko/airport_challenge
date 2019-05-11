@@ -8,6 +8,11 @@ class Airport
 
     end
     def store_plane(plane)
+        fail 'Airport is full' if full?
         @planes << plane
     end
+    def full?
+        @planes.count >= @capacity
+    end
+    
 end
