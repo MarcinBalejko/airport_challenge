@@ -6,6 +6,5 @@ class Airport
     end
     def store_plane(plane)
         @planes << plane
-
     end
 end
