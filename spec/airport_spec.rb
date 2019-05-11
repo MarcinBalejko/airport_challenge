@@ -11,4 +11,9 @@ describe Airport do
         expect(subject.store_plane(plane)[0]).to eq plane
     end
 
+    it 'has default capacity' do
+        expect(subject.capacity).to eq Airport::DEFAULT_CAPACITY
+    end
+
+
 end
