@@ -19,4 +19,10 @@ describe Plane do
         expect(airport.store_plane(subject)[0]).to be subject
     end
 
+    it 'raises an error if airport is full' do
+        subject.land(airport)
+        airport.capacity.times { airport.store_plane(subject)} 
+        expect{subject.land(airport)}.to raise_error 'Airport is full'
+    end
+
 end
