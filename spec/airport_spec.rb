@@ -6,4 +6,8 @@ describe Airport do
         expect(subject).to respond_to :store_plane
     end
 
+    it 'stores plane' do
+        expect(subject.store_plane).to eq plane
+    end
+
 end
