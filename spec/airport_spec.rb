@@ -7,7 +7,8 @@ describe Airport do
     end
 
     it 'stores plane' do
-        expect(subject.store_plane).to eq plane
+        plane = Plane.new
+        expect(subject.store_plane(plane)[0]).to eq plane
     end
 
 end
