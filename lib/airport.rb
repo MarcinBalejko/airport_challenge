@@ -13,8 +13,10 @@ class Airport
         @planes << plane
     end
     def release_plane
-        @planes.pop
-
+        @planes.each do |x|
+            @landed = false
+        end
+        @planes.pop    
     end
 
     def full?
