@@ -5,17 +5,12 @@ class Airport
     def initialize(capacity = DEFAULT_CAPACITY)
         @capacity = capacity
         @planes = []
-
     end
     def store_plane(plane)
         fail 'Airport is full' if full?
-        fail 'No plane landing' if plane.landed? != true
         @planes << plane
     end
     def release_plane
-        @planes.each do |x|
-            @landed = false
-        end
         @planes.pop    
     end
 
