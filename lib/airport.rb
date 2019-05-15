@@ -11,12 +11,11 @@ class Airport
         @planes << plane
     end
     def release_plane
-        @planes.pop    
+        @planes.pop
     end
 
     def full?
         @planes.count >= @capacity
     end
-
 
 end
