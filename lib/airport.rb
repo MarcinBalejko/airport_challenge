@@ -13,11 +13,12 @@ class Airport
         @planes << plane
     end
     def release_plane(plane)
+        fail 'Flight delayed due to the storm' if @weather.forecast != "sunny"
         @planes.delete(plane)
         "Plane #{plane} departed"
     end
     def weather_forecast
-        @weather
+        @weather.forecast
     end
     def full?
         @planes.count >= @capacity

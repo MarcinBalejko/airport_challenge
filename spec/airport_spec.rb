@@ -31,4 +31,12 @@ describe Airport do
         expect(subject.release_plane(plane)).to eq "Plane #{plane} departed"
     end
 
+    it 'forecasts weather' do
+        expect(subject).to respond_to(:weather_forecast)
+    end
+
+    it 'it has a random weather from start' do
+        expect(subject.weather_forecast).to eq("sunny").or eq("stormy")
+    end
+
 end
