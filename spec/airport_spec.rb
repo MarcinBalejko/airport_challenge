@@ -28,7 +28,7 @@ describe Airport do
 
     it 'releases given plane' do
         subject.store_plane(plane)
-        expect(subject.release_plane(plane)).to eq nil
+        expect(subject.release_plane(plane)).to eq "Plane #{plane} departed"
     end
 
 end

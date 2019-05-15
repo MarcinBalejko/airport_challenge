@@ -12,7 +12,7 @@ class Airport
     end
     def release_plane(plane)
         @planes.delete(plane)
-        puts "Plane #{plane} departed"
+        "Plane #{plane} departed"
     end
 
     def full?
