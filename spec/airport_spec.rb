@@ -39,4 +39,9 @@ describe Airport do
         expect(subject.weather_forecast).to eq("sunny").or eq("stormy")
     end
 
+    it 'does not realease planes during storm' do
+        subject.stub(:weather_forecast).and_return("stormy")
+        expect{airport.release_plane}.to raise_error 'Flight delayed due to the storm'
+    end
+
 end
