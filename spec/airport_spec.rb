@@ -41,8 +41,12 @@ describe Airport do
 
     it 'does not realease planes during storm' do
         subject.weather=("stormy")
-        expect{subject.release_plane(plane)}.to raise_error 'Flight delayed due to the storm'
+        expect{subject.release_plane(plane)}.to raise_error 'Not allowed during storm'
     end
 
+    it 'does not store planes if the weather is stormy' do
+        subject.weather=("stormy")
+        expect{subject.store_plane(plane)}.to raise_error "Not allowed during storm"
+    end
 
 end
