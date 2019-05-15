@@ -10,8 +10,9 @@ class Airport
         fail 'Airport is full' if full?
         @planes << plane
     end
-    def release_plane
-        @planes.pop
+    def release_plane(plane)
+        @planes.delete(plane)
+        puts "Plane #{plane} departed"
     end
 
     def full?

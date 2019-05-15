@@ -26,10 +26,9 @@ describe Airport do
         expect { subject.store_plane(plane) }.to raise_error 'Airport is full'
     end
 
-    it 'releases planes' do
+    it 'releases given plane' do
         subject.store_plane(plane)
-        expect(subject.release_plane).to eq plane
+        expect(subject.release_plane(plane)).to eq nil
     end
-
 
 end
