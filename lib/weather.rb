@@ -1,10 +1,10 @@
 require_relative 'airport'
 class Weather
-    attr_reader :state
+    attr_reader :weather
     def initialize
-        @state = ['stormy', 'sunny'].sample
+        @weather = ['stormy', 'sunny'].sample
     end
     def forecast
-        @state
+        @weather
     end
 end

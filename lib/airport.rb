@@ -9,8 +9,9 @@ class Airport
         @weather = weather.forecast
     end
     def store_plane(plane)
+        
+        fail 'Landing denied' if @weather != "sunny"
         fail 'Airport is full' if full?
-        fail 'Not allowed during storm' if @weather != "sunny"
         @planes << plane
     end
     def release_plane(plane)

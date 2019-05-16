@@ -9,6 +9,7 @@ describe Airport do
     end
 
     it 'stores plane' do
+        subject.weather=("sunny")
         expect(subject.store_plane(plane)[0]).to eq plane
     end
 
@@ -17,16 +18,19 @@ describe Airport do
     end
 
     it 'defaults capacity' do
+        subject.weather=("sunny")
         described_class::DEFAULT_CAPACITY.times { subject.store_plane(plane) }
         expect{subject.store_plane(plane)}.to raise_error 'Airport is full'
     end
 
     it 'raises an error when full' do
+        subject.weather=("sunny")
         subject.capacity.times { subject.store_plane(plane) }
         expect { subject.store_plane(plane) }.to raise_error 'Airport is full'
     end
 
     it 'releases given plane' do
+        subject.weather=("sunny")
         subject.store_plane(plane)
         expect(subject.release_plane(plane)).to eq "Plane #{plane} departed"
     end
@@ -46,7 +50,7 @@ describe Airport do
 
     it 'does not store planes if the weather is stormy' do
         subject.weather=("stormy")
-        expect{subject.store_plane(plane)}.to raise_error "Not allowed during storm"
+        expect{subject.store_plane(plane)}.to raise_error "Landing denied"
     end
 
 end
