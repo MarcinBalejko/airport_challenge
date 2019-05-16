@@ -16,6 +16,7 @@ class Airport
     end
     def release_plane(plane)
         fail 'Not allowed during storm' if @weather != "sunny"
+        fail 'Airport is empty' if @planes.empty?
         @planes.delete(plane)
         "Plane #{plane} departed"
     end
@@ -24,6 +25,9 @@ class Airport
     end
     def full?
         @planes.count >= @capacity
+    end
+    def empty?
+        @planes.empty?
     end
 
 end

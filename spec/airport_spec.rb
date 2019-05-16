@@ -29,6 +29,11 @@ describe Airport do
         expect { subject.store_plane(plane) }.to raise_error 'Airport is full'
     end
 
+    it 'raises an error when empty' do
+        subject.weather=("sunny")
+        expect{subject.release_plane(plane)}.to raise_error 'Airport is empty'
+    end
+
     it 'releases given plane' do
         subject.weather=("sunny")
         subject.store_plane(plane)
