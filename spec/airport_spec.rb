@@ -4,14 +4,14 @@ describe Airport do
 
     let(:plane) {Plane.new}
     
-    describe 'store_plane' do
+    describe '#store_plane' do
         it 'responds to docks plane' do
             expect(subject).to respond_to :store_plane
         end
 
         it 'does not store planes if the weather is stormy' do
             subject.weather=("stormy")
-            expect{subject.store_plane(plane)}.to raise_error "Landing denied"
+            expect{subject.store_plane(plane)}.to raise_error "Request denied: Not allowed during storm"
         end
     
         it 'stores plane' do
@@ -20,7 +20,7 @@ describe Airport do
         end
     end
 
-    describe 'capacity' do 
+    describe '#capacity' do 
         it 'has default capacity' do
             expect(subject.capacity).to eq Airport::DEFAULT_CAPACITY
         end
@@ -28,23 +28,22 @@ describe Airport do
         it 'defaults capacity' do
             subject.weather=("sunny")
             described_class::DEFAULT_CAPACITY.times { subject.store_plane(plane) }
-            expect{subject.store_plane(plane)}.to raise_error 'Airport is full'
+            expect{subject.store_plane(plane)}.to raise_error 'Request denied: Airport is full'
         end
         
-
         it 'raises an error when full' do
             subject.weather=("sunny")
             subject.capacity.times { subject.store_plane(plane) }
-            expect { subject.store_plane(plane) }.to raise_error 'Airport is full'
+            expect { subject.store_plane(plane) }.to raise_error 'Request denied: Airport is full'
         end
 
         it 'raises an error when empty' do
             subject.weather=("sunny")
-            expect{subject.release_plane(plane)}.to raise_error 'Airport is empty'
+            expect{subject.release_plane(plane)}.to raise_error 'Request denied: Airport is empty'
         end
     end
 
-    describe 'release_plane' do
+    describe '#release_plane' do
         it 'releases given plane' do
             subject.weather=("sunny")
             subject.store_plane(plane)
@@ -53,11 +52,11 @@ describe Airport do
 
         it 'does not realease planes during storm' do
             subject.weather=("stormy")
-            expect{subject.release_plane(plane)}.to raise_error 'Not allowed during storm'
+            expect{subject.release_plane(plane)}.to raise_error 'Request denied: Not allowed during storm'
         end
     end
 
-    describe 'weather_forecast' do
+    describe '#weather_forecast' do
         it 'forecasts weather' do
             expect(subject).to respond_to(:weather_forecast)
         end
